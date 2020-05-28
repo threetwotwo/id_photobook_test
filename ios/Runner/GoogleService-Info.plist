@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>131838601711-jnfshgkso68mjp235pe4qip4g5qonvb5.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.131838601711-jnfshgkso68mjp235pe4qip4g5qonvb5</string>
+	<key>API_KEY</key>
+	<string>AIzaSyClR-99pLHQvzcWt14CUta-zNMv88AaOPM</string>
+	<key>GCM_SENDER_ID</key>
+	<string>131838601711</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.garypiong.idphotobooktest</string>
+	<key>PROJECT_ID</key>
+	<string>idphotobooktest</string>
+	<key>STORAGE_BUCKET</key>
+	<string>idphotobooktest.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:131838601711:ios:4ad5206a11a360a8d86e1a</string>
+	<key>DATABASE_URL</key>
+	<string>https://idphotobooktest.firebaseio.com</string>
+</dict>
+</plist>
