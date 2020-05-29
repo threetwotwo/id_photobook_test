@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:idphotobooktest/constants/app_colors.dart';
+import 'package:idphotobooktest/ui/screens/katalog_screen.dart';
 import 'package:idphotobooktest/ui/screens/home_screen.dart';
 import 'package:idphotobooktest/ui/screens/profile_screen.dart';
 
@@ -48,7 +49,7 @@ class _HomeState extends State<Home> {
         index: _tabIndex,
         children: <Widget>[
           HomeScreen(),
-          Container(color: Colors.green),
+          KatalogScreen(),
           Container(color: Colors.red),
           ProfileScreen(),
         ],

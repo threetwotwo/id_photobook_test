@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:idphotobooktest/constants/app_colors.dart';
 import 'package:idphotobooktest/constants/styles.dart';
 import 'package:idphotobooktest/ui/safe_scaffold.dart';
+import 'package:idphotobooktest/ui/shared/base_app_bar.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeScaffold(
+      appBar: BaseAppBar(),
       child: ListView(
         children: <Widget>[
           //Header with CTA
@@ -58,6 +60,38 @@ class HomeScreen extends StatelessWidget {
             style: Styles.b12Normal,
             textAlign: TextAlign.center,
           ),
+          SizedBox(height: 35),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: GridView.count(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              crossAxisCount: 2,
+              crossAxisSpacing: 8,
+              mainAxisSpacing: 12,
+              childAspectRatio: 1.1,
+              children: List.generate(
+                6,
+                (index) => Column(
+                  children: <Widget>[
+                    Container(
+                      color: Colors.grey[100],
+                      child: Image.asset(
+                        'assets/images/img_photobook 1.jpg',
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    SizedBox(height: 12),
+                    Text(
+                      'PHOTOBOOK',
+                      style: Styles.h13ExtraBold,
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          )
         ],
       ),
     );

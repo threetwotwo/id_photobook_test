@@ -10,6 +10,9 @@ class Styles {
   static final h14ExtraBold =
       GoogleFonts.nunito().copyWith(fontWeight: FontWeight.w900, fontSize: 14);
 
+  static final h13ExtraBold =
+      GoogleFonts.nunito().copyWith(fontWeight: FontWeight.w900, fontSize: 13);
+
   static final h14Bold =
       GoogleFonts.nunito().copyWith(fontWeight: FontWeight.bold, fontSize: 14);
 
