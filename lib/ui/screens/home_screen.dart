@@ -9,10 +9,17 @@ class HomeScreen extends StatelessWidget {
     return SafeScaffold(
       child: ListView(
         children: <Widget>[
+          //Header with CTA
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             height: 375,
-            color: Colors.grey[100],
+            decoration: BoxDecoration(
+              color: Colors.grey[100],
+              image: DecorationImage(
+                image: AssetImage('assets/images/hero1.jpg'),
+                fit: BoxFit.cover,
+              ),
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -38,6 +45,18 @@ class HomeScreen extends StatelessWidget {
                 ),
               ],
             ),
+          ),
+          //Categories
+          SizedBox(height: 30),
+          Text(
+            'Pilih foto dan cetak sesuai keinginan',
+            style: Styles.h18ExtraBold,
+            textAlign: TextAlign.center,
+          ),
+          Text(
+            'Dari photobook, photocard, hingga photo lamp bisa kamu buat disini!',
+            style: Styles.b12Normal,
+            textAlign: TextAlign.center,
           ),
         ],
       ),

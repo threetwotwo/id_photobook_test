@@ -16,7 +16,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       backgroundColor: Colors.white,
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.black,
+        type: BottomNavigationBarType.fixed,
         selectedItemColor: AppColors.yellow,
         unselectedItemColor: Colors.grey,
         currentIndex: _tabIndex,

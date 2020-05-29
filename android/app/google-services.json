@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "131838601711",
+    "firebase_url": "https://idphotobooktest.firebaseio.com",
+    "project_id": "idphotobooktest",
+    "storage_bucket": "idphotobooktest.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:131838601711:android:2a0323207f1b210cd86e1a",
+        "android_client_info": {
+          "package_name": "com.garypiong.idphotobooktest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "131838601711-rlpr4uc25nltcqm1n31ghf8gtjriv65a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCk_mayA7m7RutscprXcbJptrhSMumFw2Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "131838601711-rlpr4uc25nltcqm1n31ghf8gtjriv65a.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "131838601711-jnfshgkso68mjp235pe4qip4g5qonvb5.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.garypiong.idphotobooktest"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -12,5 +12,8 @@ class Styles {
 
   static final h14Bold =
       GoogleFonts.nunito().copyWith(fontWeight: FontWeight.bold, fontSize: 14);
+
   static final h14Normal = GoogleFonts.nunito().copyWith(fontSize: 14);
+
+  static final b12Normal = GoogleFonts.nunito().copyWith(fontSize: 12);
 }
