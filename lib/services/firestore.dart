@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 
 class FirestoreService {
   static final shared = Firestore.instance;
@@ -28,13 +29,20 @@ class FirestoreService {
     return query.snapshots();
   }
 
-  static Future<void> createUser(FirebaseUser user) {
-    print('FirestoreService.createUser');
-    return userRef(user.uid).setData({
-      'uid': user.uid,
-      'email': user.email,
-    }, merge: true);
-  }
+  static Future<void> createUser({
+    @required FirebaseUser user,
+    @required String displayName,
+    @required String whatsAppNumber,
+    String phoneNumber,
+    @required String password,
+  }) =>
+      userRef(user.uid).setData({
+        'uid': user.uid,
+        'email': user.email,
+        'display_name': displayName,
+        'whatsapp_number': whatsAppNumber,
+        'phone_number': phoneNumber,
+      }, merge: true);
 
 //  static Future<void> uploadToAlbum(Album album) async {
 //    final user = await Auth.currentUser();

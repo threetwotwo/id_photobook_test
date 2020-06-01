@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
+import 'package:idphotobooktest/services/firestore.dart';
 
 class Auth extends ChangeNotifier {
   final FirebaseUser user;
@@ -39,5 +40,34 @@ class Auth extends ChangeNotifier {
       String email, String password) async {
     return shared.createUserWithEmailAndPassword(
         email: email, password: password);
+  }
+
+  static Future<String> createUser({
+    @required String displayName,
+    @required String whatsAppNumber,
+    String phoneNumber,
+    @required String email,
+    @required String password,
+  }) async {
+    try {
+      final authResult = await shared.createUserWithEmailAndPassword(
+          email: email, password: password);
+
+      if (authResult != null) {
+        FirestoreService.createUser(
+            user: authResult.user,
+            displayName: displayName,
+            whatsAppNumber: whatsAppNumber,
+            password: password);
+        return null;
+      }
+    } catch (e) {
+      if (e is PlatformException)
+        return e.message;
+      else
+        return 'Something went wrong';
+    }
+
+    return null;
   }
 }

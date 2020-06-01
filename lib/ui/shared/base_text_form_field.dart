@@ -10,6 +10,8 @@ class BaseTextFormField extends StatelessWidget {
   final TextInputType keyboardType;
   final TextInputAction textInputAction;
 
+  final Function(String) validator;
+
   const BaseTextFormField({
     Key key,
     @required this.controller,
@@ -19,6 +21,7 @@ class BaseTextFormField extends StatelessWidget {
     this.keyboardType,
     this.textInputAction,
     this.focusNode,
+    this.validator,
   }) : super(key: key);
 
   @override
@@ -26,12 +29,6 @@ class BaseTextFormField extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-//        Row(
-//          children: <Widget>[
-//
-//            Text(subtitle ?? '', style: Styles.b12Normal)
-//          ],
-//        ),
         RichText(
           maxLines: 2,
           text: TextSpan(
@@ -49,6 +46,7 @@ class BaseTextFormField extends StatelessWidget {
         ),
         SizedBox(height: 5),
         TextFormField(
+          validator: validator,
           focusNode: focusNode,
           controller: controller,
           style: Styles.h14Bold,

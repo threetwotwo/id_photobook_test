@@ -5,6 +5,8 @@ import 'package:idphotobooktest/constants/app_colors.dart';
 import 'package:idphotobooktest/services/auth.dart';
 import 'package:idphotobooktest/ui/home.dart';
 import 'package:idphotobooktest/ui/login_screen.dart';
+import 'package:idphotobooktest/ui/screens/login_page.dart';
+import 'package:idphotobooktest/ui/screens/login_signup_screen.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -34,7 +36,7 @@ class MyApp extends StatelessWidget {
               ChangeNotifierProvider<Auth>(
                 create: (BuildContext context) => Auth(data),
               )
-            ], child: data == null ? LoginScreen() : Home());
+            ], child: data == null ? LoginSignUpScreen() : Home());
           }),
     );
   }

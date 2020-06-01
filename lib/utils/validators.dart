@@ -10,8 +10,9 @@ class Validators {
     Pattern pattern =
         r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
     RegExp regex = RegExp(pattern);
-
-    if (email.isNotEmpty && !regex.hasMatch(email)) {
+    if (email.isEmpty) {
+      return 'Masukin email';
+    } else if (!regex.hasMatch(email)) {
       return 'Format email salah';
     } else {
       return null;
@@ -53,7 +54,7 @@ class Validators {
     return null;
   }
 
-  static String validatePhone(String phone) {
+  static String validateWhatsApp(String phone) {
     if (!(RegExp(r'^[0-9]*$')).hasMatch(phone)) {
       return 'Nomor Whatsapp tidak valid';
     } else if (phone.isEmpty) {
@@ -62,6 +63,19 @@ class Validators {
       return 'Nomor Whatsapp terlalu panjang';
     } else if (phone.length < 10) {
       return 'Nomor Whatsapp terlalu singkat';
+    }
+    return null;
+  }
+
+  static String validatePhone(String phone) {
+    if (phone.isEmpty)
+      return null;
+    else if (!(RegExp(r'^[0-9]*$')).hasMatch(phone)) {
+      return 'Nomor Handphone tidak valid';
+    } else if (phone.length > 15) {
+      return 'Nomor Handphone terlalu panjang';
+    } else if (phone.length < 10) {
+      return 'Nomor Handphone terlalu singkat';
     }
     return null;
   }
