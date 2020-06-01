@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:idphotobooktest/constants/app_colors.dart';
 import 'package:idphotobooktest/ui/screens/katalog_screen.dart';
 import 'package:idphotobooktest/ui/screens/home_screen.dart';
+import 'package:idphotobooktest/ui/screens/login_page.dart';
+import 'package:idphotobooktest/ui/screens/login_signup_screen.dart';
 import 'package:idphotobooktest/ui/screens/profile_screen.dart';
 
 class Home extends StatefulWidget {
@@ -50,7 +52,7 @@ class _HomeState extends State<Home> {
         children: <Widget>[
           HomeScreen(),
           KatalogScreen(),
-          Container(color: Colors.red),
+          LoginSignUpScreen(),
           ProfileScreen(),
         ],
       ),

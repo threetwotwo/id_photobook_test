@@ -3,6 +3,7 @@ import 'package:idphotobooktest/constants/app_colors.dart';
 import 'package:idphotobooktest/constants/styles.dart';
 import 'package:idphotobooktest/ui/safe_scaffold.dart';
 import 'package:idphotobooktest/ui/shared/base_app_bar.dart';
+import 'package:idphotobooktest/ui/shared/yellow_button.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -39,10 +40,9 @@ class HomeScreen extends StatelessWidget {
                 SizedBox(height: 20),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: FlatButton(
-                    color: AppColors.yellow,
-                    onPressed: () {},
-                    child: Text('Buat Photobookmu Sekarang!'),
+                  child: YellowButton(
+                    onTap: () {},
+                    title: 'Buat Photobookmu Sekarang!',
                   ),
                 ),
               ],
