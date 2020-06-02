@@ -4,17 +4,30 @@ import 'package:flutter/services.dart';
 import 'package:idphotobooktest/services/firestore.dart';
 
 class Auth extends ChangeNotifier {
-  final FirebaseUser user;
+  FirebaseUser user;
+
+  //Factory constructor
+  Auth(this.user);
 
   static final shared = FirebaseAuth.instance;
 
-  Auth(this.user);
+  void updateUser(FirebaseUser user) {
+    this.user = user;
+    notifyListeners();
+  }
 
   static Future<FirebaseUser> currentUser() async => shared.currentUser();
 
   static Stream<FirebaseUser> userStream() => shared.onAuthStateChanged;
 
-  static Future<void> signOut() => shared.signOut();
+  Future<void> signOut() async {
+    try {
+      await shared.signOut();
+      updateUser(null);
+    } catch (e) {
+      print('Auth.signOut $e');
+    }
+  }
 
   static Future<String> recoverPassword(String email) async {
     try {
@@ -26,11 +39,18 @@ class Auth extends ChangeNotifier {
     return null;
   }
 
-  static Future<String> loginWithEmail(String email, String password) async {
+  Future<String> loginWithEmail(String email, String password) async {
     try {
-      await shared.signInWithEmailAndPassword(email: email, password: password);
+      final result = await shared.signInWithEmailAndPassword(
+          email: email, password: password);
+      print('Auth.loginWithEmail ${result.user.email}');
+      updateUser(result.user);
+      return null;
     } catch (e) {
-      if (e is PlatformException) return e.message;
+      if (e is PlatformException) {
+        print('Auth.loginWithEmail ${e.message}');
+        return e.message;
+      }
     }
 
     return null;

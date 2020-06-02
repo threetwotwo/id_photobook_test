@@ -12,10 +12,12 @@ import 'package:provider/provider.dart';
 class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final auth = context.watch<Auth>().user;
+    final auth = context.watch<Auth>();
+
+    if (auth.user == null) return SizedBox();
 
     return StreamBuilder<DocumentSnapshot>(
-        stream: Repo.userStream(auth.uid),
+        stream: Repo.userStream(auth.user.uid),
         builder: (context, snapshot) {
           if (!snapshot.hasData) return LoadingIndicator();
 
@@ -110,7 +112,9 @@ class ProfileScreen extends StatelessWidget {
                   ),
                 ),
                 FlatButton(
-                  onPressed: Auth.signOut,
+                  onPressed: () {
+                    auth.signOut();
+                  },
                   child: Text(
                     'Sign out',
                     style: Styles.baseStyle,

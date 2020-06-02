@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:idphotobooktest/constants/styles.dart';
 import 'package:idphotobooktest/services/auth.dart';
@@ -7,6 +8,7 @@ import 'package:idphotobooktest/ui/shared/yellow_button.dart';
 import 'package:idphotobooktest/ui/shared/yellow_outline_button.dart';
 import 'package:idphotobooktest/ui/widgets/login_action_text.dart';
 import 'package:idphotobooktest/utils/validators.dart';
+import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
   final VoidCallback signUpButtonTapped;
@@ -83,7 +85,9 @@ class _LoginPageState extends State<LoginPage> {
                   style: Styles.h14Bold.copyWith(color: Colors.red),
                 ),
               YellowButton(
-                onTap: _login,
+                onTap: () {
+                  _login();
+                },
                 isLoading: isLoading,
                 title: 'Masuk Sekarang',
                 padding: const EdgeInsets.all(14),
@@ -143,11 +147,16 @@ class _LoginPageState extends State<LoginPage> {
       setState(() {
         isLoading = true;
       });
-      final result = await Auth.loginWithEmail(email, password);
+
+      //Notify Auth service
+      final auth = context.read<Auth>();
+      final result = await auth.loginWithEmail(email, password);
+
       setState(() {
         isLoading = false;
         return _errorMessage = result;
       });
     }
+    return null;
   }
 }

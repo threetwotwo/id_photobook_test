@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:idphotobooktest/constants/app_colors.dart';
 
 class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
+  final Widget title;
+
+  const BaseAppBar({Key key, this.title}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -13,6 +16,7 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
           color: Colors.black,
         ),
       ),
+      title: title,
       actions: <Widget>[
         IconButton(
           onPressed: () {},

@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:idphotobooktest/constants/app_colors.dart';
 import 'package:idphotobooktest/constants/styles.dart';
+import 'package:idphotobooktest/services/auth.dart';
 import 'package:idphotobooktest/ui/safe_scaffold.dart';
 import 'package:idphotobooktest/ui/shared/base_app_bar.dart';
 import 'package:idphotobooktest/ui/shared/yellow_button.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final auth = context.watch<Auth>();
+
     return SafeScaffold(
-      appBar: BaseAppBar(),
+      appBar: BaseAppBar(title: Text(auth?.user?.email ?? 'no user')),
       child: ListView(
         children: <Widget>[
           //Header with CTA

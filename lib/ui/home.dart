@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:idphotobooktest/constants/app_colors.dart';
+import 'package:idphotobooktest/services/auth.dart';
 import 'package:idphotobooktest/ui/screens/katalog_screen.dart';
 import 'package:idphotobooktest/ui/screens/home_screen.dart';
 import 'package:idphotobooktest/ui/screens/login_page.dart';
 import 'package:idphotobooktest/ui/screens/login_signup_screen.dart';
 import 'package:idphotobooktest/ui/screens/profile_screen.dart';
+import 'package:provider/provider.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -16,6 +18,8 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    final auth = context.watch<Auth>();
+
     return Scaffold(
       backgroundColor: Colors.white,
       bottomNavigationBar: BottomNavigationBar(
@@ -53,7 +57,7 @@ class _HomeState extends State<Home> {
           HomeScreen(),
           KatalogScreen(),
           LoginSignUpScreen(),
-          ProfileScreen(),
+          auth.user == null ? LoginPage() : ProfileScreen(),
         ],
       ),
     );

@@ -30,13 +30,15 @@ class MyApp extends StatelessWidget {
       home: StreamBuilder<FirebaseUser>(
           stream: Auth.userStream(),
           builder: (context, snapshot) {
-            final data = snapshot.data;
+            final firebaseUser = snapshot.data;
 
-            return MultiProvider(providers: [
-              ChangeNotifierProvider<Auth>(
-                create: (BuildContext context) => Auth(data),
-              )
-            ], child: data == null ? LoginSignUpScreen() : Home());
+            return MultiProvider(
+              providers: [
+                ChangeNotifierProvider<Auth>(
+                    create: (BuildContext context) => Auth(firebaseUser))
+              ],
+              child: Home(),
+            );
           }),
     );
   }
