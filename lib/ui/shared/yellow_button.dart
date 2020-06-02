@@ -23,6 +23,7 @@ class YellowButton extends StatelessWidget {
     return FlatButton(
       padding: padding,
       color: AppColors.yellow,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
       onPressed: onTap,
       child: isLoading
           ? LoadingIndicator(padding: const EdgeInsets.all(0))

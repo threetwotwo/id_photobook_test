@@ -19,12 +19,13 @@ class YellowOutlineButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return OutlineButton(
-      borderSide: BorderSide(color: AppColors.yellow, width: 2),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+      borderSide: BorderSide(color: Colors.orangeAccent, width: 2),
       padding: padding,
       onPressed: onTap,
       child: Text(
         title,
-        style: textStyle ?? Styles.h14Bold,
+        style: textStyle ?? TextStyle(color: Colors.orangeAccent),
       ),
     );
   }

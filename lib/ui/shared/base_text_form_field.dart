@@ -4,7 +4,7 @@ import 'package:idphotobooktest/constants/styles.dart';
 class BaseTextFormField extends StatelessWidget {
   final TextEditingController controller;
   final FocusNode focusNode;
-  final String title;
+  final String label;
   final String subtitle;
   final String hint;
   final TextInputType keyboardType;
@@ -15,7 +15,7 @@ class BaseTextFormField extends StatelessWidget {
   const BaseTextFormField({
     Key key,
     @required this.controller,
-    @required this.title,
+    @required this.label,
     this.hint,
     this.subtitle,
     this.keyboardType,
@@ -34,7 +34,7 @@ class BaseTextFormField extends StatelessWidget {
           text: TextSpan(
             children: [
               TextSpan(
-                text: title + ' ',
+                text: label + ' ',
                 style: Styles.h14Normal,
               ),
               TextSpan(

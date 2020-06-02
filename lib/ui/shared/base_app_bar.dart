@@ -9,23 +9,7 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: AppColors.yellow,
-      leading: IconButton(
-        onPressed: () {},
-        icon: Icon(
-          Icons.menu,
-          color: Colors.black,
-        ),
-      ),
       title: title,
-      actions: <Widget>[
-        IconButton(
-          onPressed: () {},
-          icon: Icon(
-            Icons.shopping_cart,
-            color: Colors.black,
-          ),
-        ),
-      ],
     );
   }
 
