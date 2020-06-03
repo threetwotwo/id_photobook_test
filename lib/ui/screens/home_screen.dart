@@ -27,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
           height: 30,
           child: Row(
             children: <Widget>[
-              Text(auth.user?.email ?? 'no user'),
+              Text(auth?.user?.email ?? 'no user'),
               Image.asset(
                 'assets/images/logo.png',
                 fit: BoxFit.fitHeight,

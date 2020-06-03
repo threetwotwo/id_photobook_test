@@ -18,7 +18,8 @@ class Auth extends ChangeNotifier {
 
   static Future<FirebaseUser> currentUser() async => shared.currentUser();
 
-  static Stream<FirebaseUser> userStream() => shared.onAuthStateChanged;
+  static Stream<Auth> userStream() =>
+      shared.onAuthStateChanged.map((event) => Auth(event));
 
   Future<void> signOut() async {
     try {

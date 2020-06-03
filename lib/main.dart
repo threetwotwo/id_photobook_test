@@ -24,13 +24,16 @@ class MyApp extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: StreamBuilder<FirebaseUser>(
-          stream: Auth.userStream(),
-          builder: (context, snapshot) {
-//            if (snapshot == null) return ButterflyLoading();
-            final firebaseUser = snapshot.data;
-            return Home(user: firebaseUser);
-          }),
+      home: MultiProvider(providers: [
+        StreamProvider<Auth>(
+          create: (BuildContext context) {
+            return Auth.userStream();
+          },
+        )
+//            ChangeNotifierProvider<Auth>(create: (BuildContext context) {
+//              return Auth(widget.user);
+//            }),
+      ], child: Home()),
     );
   }
 }

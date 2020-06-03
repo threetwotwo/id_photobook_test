@@ -14,7 +14,7 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final auth = Provider.of<Auth>(context);
-    if (auth.user == null) return LoginPage();
+    if (auth?.user == null) return LoginPage();
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,

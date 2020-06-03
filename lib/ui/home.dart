@@ -21,52 +21,45 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider<Auth>(create: (BuildContext context) {
-          return Auth(widget.user);
-        }),
-      ],
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        bottomNavigationBar: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          selectedItemColor: AppColors.yellow,
-          unselectedItemColor: Colors.grey,
-          currentIndex: _tabIndex,
-          onTap: (val) {
-            setState(() {
-              _tabIndex = val;
-            });
-          },
-          items: <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              title: SizedBox(),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.shopping_basket),
-              title: SizedBox(),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.shopping_cart),
-              title: SizedBox(),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person_outline),
-              title: SizedBox(),
-            ),
-          ],
-        ),
-        body: IndexedStack(
-          index: _tabIndex,
-          children: <Widget>[
-            HomeScreen(),
-            KatalogScreen(),
-            Container(),
-            ProfileScreen(),
-          ],
-        ),
+    return Scaffold(
+      backgroundColor: Colors.white,
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        selectedItemColor: AppColors.yellow,
+        unselectedItemColor: Colors.grey,
+        currentIndex: _tabIndex,
+        onTap: (val) {
+          setState(() {
+            _tabIndex = val;
+          });
+        },
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            title: SizedBox(),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_basket),
+            title: SizedBox(),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_cart),
+            title: SizedBox(),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person_outline),
+            title: SizedBox(),
+          ),
+        ],
+      ),
+      body: IndexedStack(
+        index: _tabIndex,
+        children: <Widget>[
+          HomeScreen(),
+          KatalogScreen(),
+          Container(),
+          ProfileScreen(),
+        ],
       ),
     );
   }

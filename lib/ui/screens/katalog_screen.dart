@@ -164,7 +164,6 @@ class _KatalogScreenState extends State<KatalogScreen> {
                                   'Terjual 9 pcs',
                                   style: TextStyle(
                                     color: Colors.grey,
-                                    fontWeight: FontWeight.bold,
                                     fontSize: 12,
                                   ),
                                 ),
