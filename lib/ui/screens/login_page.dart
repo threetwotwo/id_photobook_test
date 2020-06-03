@@ -5,11 +5,9 @@ import 'package:idphotobooktest/services/auth.dart';
 import 'package:idphotobooktest/ui/safe_scaffold.dart';
 import 'package:idphotobooktest/ui/screens/signup_screen.dart';
 import 'package:idphotobooktest/ui/shared/base_app_bar.dart';
-import 'package:idphotobooktest/ui/shared/base_text_form_field.dart';
 import 'package:idphotobooktest/ui/shared/yellow_button.dart';
 import 'package:idphotobooktest/ui/shared/yellow_outline_button.dart';
 import 'package:idphotobooktest/ui/widgets/legacy_text_form_field.dart';
-import 'package:idphotobooktest/ui/widgets/login_action_text.dart';
 import 'package:idphotobooktest/utils/validators.dart';
 import 'package:provider/provider.dart';
 

@@ -2,11 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:idphotobooktest/constants/app_colors.dart';
 
 class DiskonBadge extends StatelessWidget {
-  final height;
-  final width;
-  final triangleHeight;
+  final double height;
+  final double width;
+  final int diskon;
+  final double triangleHeight;
 
-  DiskonBadge({this.height: 55.0, this.width: 50.0, this.triangleHeight: 12.0});
+  DiskonBadge({
+    this.height: 55.0,
+    this.width: 50.0,
+    this.triangleHeight: 12.0,
+    @required this.diskon,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -14,6 +20,25 @@ class DiskonBadge extends StatelessWidget {
       child: Container(
         height: height,
         width: width,
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(4.0),
+            child: Column(
+              children: <Widget>[
+                Text(
+                  (diskon ?? 0).toString() + '%',
+                  style: TextStyle(
+                      color: AppColors.matterhorn, fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  'OFF',
+                  style: TextStyle(
+                      color: AppColors.torchRed, fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
       painter: DiskonPainter(triangleHeight: triangleHeight),
     );

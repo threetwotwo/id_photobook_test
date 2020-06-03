@@ -3,11 +3,9 @@ import 'package:idphotobooktest/constants/styles.dart';
 import 'package:idphotobooktest/services/auth.dart';
 import 'package:idphotobooktest/ui/safe_scaffold.dart';
 import 'package:idphotobooktest/ui/shared/base_app_bar.dart';
-import 'package:idphotobooktest/ui/shared/base_text_form_field.dart';
 import 'package:idphotobooktest/ui/shared/yellow_button.dart';
 import 'package:idphotobooktest/ui/shared/yellow_outline_button.dart';
 import 'package:idphotobooktest/ui/widgets/legacy_text_form_field.dart';
-import 'package:idphotobooktest/ui/widgets/login_action_text.dart';
 import 'package:idphotobooktest/utils/validators.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -88,19 +86,23 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     label: 'Nomor Whatsapp',
                     hint: 'masukan no whatsapp kakak',
                   ),
+                  SizedBox(height: 18),
+
                   LegacyTextFormField(
                     controller: emailController,
                     validator: (val) => Validators.validateEmail(val),
                     label: 'Email',
                     hint: 'masukan email kakak jika ada',
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8.0),
-                    child: Text(
-                      '*kosonging jika tidak punya',
-                      style: TextStyle(color: Colors.grey),
-                    ),
-                  ),
+//                  Padding(
+//                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+//                    child: Text(
+//                      '*kosonging jika tidak punya',
+//                      style: TextStyle(color: Colors.grey),
+//                    ),
+//                  ),
+                  SizedBox(height: 18),
+
                   LegacyTextFormField(
                     controller: passwordController,
                     validator: (val) => Validators.validatePass(val),
@@ -127,6 +129,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                     ],
                   ),
+                  if (_errorMessage != null)
+                    Text(
+                      _errorMessage ?? '',
+                      style: Styles.h14Bold.copyWith(color: Colors.red),
+                    ),
                   YellowButton(
                     onTap: _signUp,
                     isLoading: isLoading,
