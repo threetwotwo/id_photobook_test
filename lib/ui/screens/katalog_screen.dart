@@ -64,10 +64,10 @@ class KatalogScreen extends StatelessWidget {
                       children: <Widget>[
                         AspectRatio(
                           aspectRatio: 1,
-                          child: Image.asset(
-                            'assets/images/Dear Mom_thumb_300x300.png',
-                            fit: BoxFit.cover,
-                          ),
+//                          child: Image.asset(
+//                            'assets/images/Dear Mom_thumb_300x300.png',
+//                            fit: BoxFit.cover,
+//                          ),
                         ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),

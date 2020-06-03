@@ -63,7 +63,7 @@ class _LoginPageState extends State<LoginPage> {
                     height: 135,
                     width: 135,
                     child: Image.asset(
-                      'assets/images/book 1.png',
+                      'assets/images/book.png',
                     ),
                   ),
                   SizedBox(height: 28),

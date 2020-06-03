@@ -1,12 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:idphotobooktest/constants/app_colors.dart';
 import 'package:idphotobooktest/services/auth.dart';
 import 'package:idphotobooktest/ui/home.dart';
-import 'package:idphotobooktest/ui/login_screen.dart';
-import 'package:idphotobooktest/ui/screens/login_page.dart';
-import 'package:idphotobooktest/ui/screens/login_signup_screen.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -31,11 +27,11 @@ class MyApp extends StatelessWidget {
           stream: Auth.userStream(),
           builder: (context, snapshot) {
             final firebaseUser = snapshot.data;
-
             return MultiProvider(
               providers: [
-                ChangeNotifierProvider<Auth>(
-                    create: (BuildContext context) => Auth(firebaseUser))
+                ChangeNotifierProvider<Auth>(create: (BuildContext context) {
+                  return Auth(firebaseUser);
+                })
               ],
               child: Home(),
             );

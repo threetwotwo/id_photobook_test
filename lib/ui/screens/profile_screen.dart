@@ -7,7 +7,118 @@ import 'package:idphotobooktest/services/auth.dart';
 import 'package:idphotobooktest/services/repo.dart';
 import 'package:idphotobooktest/ui/shared/avatar_image.dart';
 import 'package:idphotobooktest/ui/shared/loading_indicator.dart';
+import 'package:idphotobooktest/ui/widgets/button_kupon.dart';
+import 'package:idphotobooktest/ui/widgets/customer_photo.dart';
+import 'package:idphotobooktest/ui/widgets/edit_profile_button.dart';
+import 'package:idphotobooktest/ui/widgets/email_and_phone.dart';
+import 'package:idphotobooktest/ui/widgets/logout_button.dart';
+import 'package:idphotobooktest/ui/widgets/member_card.dart';
 import 'package:provider/provider.dart';
+
+class AkunView extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final auth = Provider.of<Auth>(context);
+    return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        elevation: 0,
+        title: SizedBox(
+          height: 30.0,
+          child: Image.asset('assets/images/logo.png', fit: BoxFit.fitHeight),
+        ),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            Container(
+              padding: EdgeInsets.only(top: 40.0, bottom: 20.0),
+              width: MediaQuery.of(context).size.width,
+              color: Colors.grey[200],
+              child: Column(
+                children: <Widget>[
+                  Text(
+                    'IDPhotobook Club Member',
+                    style: TextStyle(
+                        color: AppColors.matterhorn,
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  MemberCard(name: auth.user.displayName, type: 1),
+                  Text(
+                    'Tap untuk melihat detil',
+                    style: TextStyle(color: Colors.grey[600]),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.all(15.0),
+              child: Column(
+                children: <Widget>[
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      Padding(
+                        padding: EdgeInsets.all(20.0),
+                        child: CustomerPhoto(photo: auth.user?.photoUrl),
+                      ),
+                      Expanded(
+                        child: Column(
+                          children: <Widget>[
+                            Padding(
+                                padding: EdgeInsets.symmetric(vertical: 10.0)),
+                            Text(
+                              auth.user?.displayName ?? '',
+                              maxLines: 1,
+                              style: TextStyle(
+                                  color: AppColors.matterhorn,
+                                  fontSize: 20.0,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            EmailAndPhone(
+                                email: auth.user?.email ?? 'email',
+                                phone: auth.user?.phoneNumber ?? 'phone'),
+                            EditProfileButton(),
+                            LogoutButton()
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 10.0),
+                    child: Divider(color: Colors.grey),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Button(
+                        color: AppColors.goldenTainoi,
+                        text: 'Daftar Transaksi',
+                        textStyle: TextStyle(color: Colors.black),
+                        icon: Padding(
+                          padding: const EdgeInsets.only(right: 5.0),
+                          child:
+                              Icon(Icons.shopping_basket, color: Colors.white),
+                        ),
+                        height: 60.0,
+                        width: MediaQuery.of(context).size.width / 2 - 20,
+                        padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                        onPressed: () {},
+                      ),
+                      ButtonKupon()
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
 
 class ProfileScreen extends StatelessWidget {
   @override

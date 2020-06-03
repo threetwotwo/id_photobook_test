@@ -4,98 +4,84 @@ import 'package:idphotobooktest/constants/styles.dart';
 import 'package:idphotobooktest/services/auth.dart';
 import 'package:idphotobooktest/ui/safe_scaffold.dart';
 import 'package:idphotobooktest/ui/shared/base_app_bar.dart';
-import 'package:idphotobooktest/ui/shared/yellow_button.dart';
+import 'package:idphotobooktest/ui/widgets/info_id_photobook_carousel.dart';
 import 'package:provider/provider.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  final bannerPageController = PageController();
+
   @override
   Widget build(BuildContext context) {
     final auth = context.watch<Auth>();
 
     return SafeScaffold(
-      appBar: BaseAppBar(title: Text(auth?.user?.email ?? 'no user')),
-      child: ListView(
-        children: <Widget>[
-          //Header with CTA
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            height: 375,
-            decoration: BoxDecoration(
-              color: Colors.grey[100],
-              image: DecorationImage(
-                image: AssetImage('assets/images/hero1.jpg'),
-                fit: BoxFit.cover,
+      appBar: BaseAppBar(
+        title: Container(
+          height: 30,
+          child: Row(
+            children: <Widget>[
+              Text(auth.user?.email ?? 'no user'),
+              Image.asset(
+                'assets/images/logo.png',
+                fit: BoxFit.fitHeight,
               ),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              mainAxisAlignment: MainAxisAlignment.center,
+            ],
+          ),
+        ),
+      ),
+      child: Column(
+        children: <Widget>[
+          AspectRatio(
+            aspectRatio: 1,
+            child: Stack(
               children: <Widget>[
-                Text(
-                  'ABADIKAN MOMEN INDAHMU',
-                  style: Styles.h18ExtraBold,
-                  textAlign: TextAlign.center,
-                ),
-                Text(
-                  'Cetak Photobook. Gratis Ongkir Keseluruh Indonesia',
-                  style: Styles.h14Normal,
-                  textAlign: TextAlign.center,
-                ),
-                SizedBox(height: 20),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: YellowButton(
-                    onTap: () {},
-                    title: 'Buat Photobookmu Sekarang!',
+                //Banner page view
+                PageView.builder(
+                    controller: bannerPageController,
+                    itemCount: 4,
+                    itemBuilder: (_, index) {
+                      return Container(
+                        color: Colors.grey[100],
+                      );
+                    }),
+                //Page dot indicator
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SmoothPageIndicator(
+                      controller: bannerPageController,
+                      count: 4,
+                      effect: ScaleEffect(
+                        dotHeight: 8,
+                        dotWidth: 8,
+                        spacing: 12,
+                        scale: 1.3,
+                        dotColor: Colors.grey.withOpacity(0.5),
+                        activeDotColor: AppColors.yellow,
+                      ),
+                    ),
                   ),
                 ),
               ],
             ),
           ),
-          //Categories
-          SizedBox(height: 30),
-          Text(
-            'Pilih foto dan cetak sesuai keinginan',
-            style: Styles.h18ExtraBold,
-            textAlign: TextAlign.center,
-          ),
-          Text(
-            'Dari photobook, photocard, hingga photo lamp bisa kamu buat disini!',
-            style: Styles.b12Normal,
-            textAlign: TextAlign.center,
-          ),
-          SizedBox(height: 35),
+          //Body content
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0),
-            child: GridView.count(
-              shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
-              crossAxisCount: 2,
-              crossAxisSpacing: 8,
-              mainAxisSpacing: 12,
-              childAspectRatio: 1.1,
-              children: List.generate(
-                6,
-                (index) => Column(
-                  children: <Widget>[
-                    Container(
-                      color: Colors.grey[100],
-                      child: Image.asset(
-                        'assets/images/img_photobook 1.jpg',
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    SizedBox(height: 12),
-                    Text(
-                      'PHOTOBOOK',
-                      style: Styles.h13ExtraBold,
-                      textAlign: TextAlign.center,
-                    ),
-                  ],
-                ),
-              ),
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              children: <Widget>[
+                InfoIDPhotobookCarousel(),
+                Divider(color: Colors.grey, height: 20),
+              ],
             ),
-          )
+          ),
         ],
       ),
     );

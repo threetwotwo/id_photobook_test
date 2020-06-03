@@ -56,9 +56,9 @@ class LegacyTextFormField extends StatelessWidget {
 //        contentPadding: const EdgeInsets.all(9),
         hintText: hint,
         suffixIcon: shouldShowSuffix
-            ? GestureDetector(
-                onTap: onSuffixTapped,
-                child: obscureText
+            ? IconButton(
+                onPressed: onSuffixTapped,
+                icon: obscureText
                     ? Icon(Icons.visibility_off)
                     : Icon(Icons.visibility),
               )
