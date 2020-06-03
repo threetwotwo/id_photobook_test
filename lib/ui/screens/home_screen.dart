@@ -1,10 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:idphotobooktest/constants/app_colors.dart';
-import 'package:idphotobooktest/constants/styles.dart';
 import 'package:idphotobooktest/services/auth.dart';
 import 'package:idphotobooktest/ui/safe_scaffold.dart';
 import 'package:idphotobooktest/ui/shared/base_app_bar.dart';
-import 'package:idphotobooktest/ui/widgets/home_orange_header.dart';
 import 'package:idphotobooktest/ui/widgets/info_id_photobook_carousel.dart';
 import 'package:idphotobooktest/ui/widgets/rekomendasi_promo.dart';
 import 'package:provider/provider.dart';

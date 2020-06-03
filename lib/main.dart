@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:idphotobooktest/constants/app_colors.dart';
 import 'package:idphotobooktest/services/auth.dart';
 import 'package:idphotobooktest/ui/home.dart';
+import 'package:idphotobooktest/ui/shared/butterfly_loading.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -26,15 +27,9 @@ class MyApp extends StatelessWidget {
       home: StreamBuilder<FirebaseUser>(
           stream: Auth.userStream(),
           builder: (context, snapshot) {
+//            if (snapshot == null) return ButterflyLoading();
             final firebaseUser = snapshot.data;
-            return MultiProvider(
-              providers: [
-                ChangeNotifierProvider<Auth>(create: (BuildContext context) {
-                  return Auth(firebaseUser);
-                })
-              ],
-              child: Home(),
-            );
+            return Home(user: firebaseUser);
           }),
     );
   }
