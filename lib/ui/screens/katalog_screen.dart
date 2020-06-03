@@ -1,90 +1,120 @@
 import 'package:flutter/material.dart';
+import 'package:idphotobooktest/constants/app_colors.dart';
 import 'package:idphotobooktest/constants/styles.dart';
 import 'package:idphotobooktest/ui/safe_scaffold.dart';
 import 'package:idphotobooktest/ui/shared/base_app_bar.dart';
+import 'package:idphotobooktest/ui/widgets/katalog_choice_chip.dart';
 
-class KatalogScreen extends StatelessWidget {
+class KatalogScreen extends StatefulWidget {
+  @override
+  _KatalogScreenState createState() => _KatalogScreenState();
+}
+
+class _KatalogScreenState extends State<KatalogScreen> {
+  int selectedChip = 0;
+
   @override
   Widget build(BuildContext context) {
     return SafeScaffold(
-      appBar: BaseAppBar(),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20.0),
-        child: ListView(
-          children: <Widget>[
-            SizedBox(height: 20),
-            //Header
-            Text(
-              'PHOTOBOOK THEME',
-              style: Styles.h18ExtraBold,
+      child: CustomScrollView(
+        slivers: <Widget>[
+          //Collapsable appbar
+          SliverAppBar(
+            expandedHeight: 250.0,
+            pinned: true,
+            elevation: 0,
+            flexibleSpace: LayoutBuilder(
+              builder: (context, constraints) {
+                var top = constraints.biggest.height;
+                return FlexibleSpaceBar(
+                  titlePadding:
+                      EdgeInsetsDirectional.only(start: 16.0, bottom: 16.0),
+                  centerTitle: false,
+                  title: Opacity(
+                    opacity: top < 100.0 ? 1.0 : 0.0,
+                    child: Text('Katalog'),
+                  ),
+                  background: Image.asset('assets/images/katalog-photobook.jpg',
+                      fit: BoxFit.cover),
+                );
+              },
             ),
-            Text(
-              'Pilih tema dari ratusan tema dari desainer terbaik kami',
-              style: Styles.h14Normal,
-            ),
-            //Divider and sort button
-            SizedBox(height: 25),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: <Widget>[
-                //Sort button
-                Row(
-                  children: <Widget>[
-                    Text('Sort', style: Styles.h14Normal),
-                    Icon(Icons.arrow_drop_down),
-                  ],
-                ),
-                //Show button
-                Row(
-                  children: <Widget>[
-                    Text('Show', style: Styles.h14Normal),
-                    Icon(Icons.arrow_drop_down),
-                  ],
-                ),
-              ],
-            ),
-            Divider(
-              height: 16,
-              thickness: 1,
-              color: Colors.grey,
-            ),
-            //Katalog
-            SizedBox(height: 20),
-            GridView.count(
-              shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
-              crossAxisCount: 2,
-              childAspectRatio: 0.82,
-              children: List.generate(
-                8,
-                (index) => InkWell(
-                  onTap: () {},
-                  child: Container(
+          ),
+          SliverToBoxAdapter(
+            child: SingleChildScrollView(
+              child: Column(
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Text(
+                      'Foto-foto Moms nanti dilayout jadi tema cantik kayak gini lho. Bakal dikasih cover istimewa juga. Ini nih pilihannya! Banyak banget dan bakal diupdate tiap bulan. Kalau Moms suka yang mana nih?',
+                      style: TextStyle(color: AppColors.matterhorn),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
                     child: Column(
                       children: <Widget>[
-                        AspectRatio(
-                          aspectRatio: 1,
-//                          child: Image.asset(
-//                            'assets/images/Dear Mom_thumb_300x300.png',
-//                            fit: BoxFit.cover,
-//                          ),
+                        Row(
+                          children: <Widget>[
+                            Expanded(
+                              child: KatalogChoiceChip(
+                                isSelected: selectedChip == 0,
+                                onSelected: () => _select(0),
+                                label: 'Semua Produk',
+                              ),
+                            ),
+                            Expanded(
+                              child: KatalogChoiceChip(
+                                isSelected: selectedChip == 1,
+                                onSelected: () => _select(1),
+                                label: 'Semua Produk',
+                              ),
+                            ),
+                          ],
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            'DEAR MOM',
-                            style: Styles.h14ExtraBold,
-                          ),
+                        Row(
+                          children: <Widget>[
+                            Expanded(
+                              child: KatalogChoiceChip(
+                                isSelected: selectedChip == 2,
+                                onSelected: () => _select(2),
+                                label: 'Semua Produk',
+                              ),
+                            ),
+                            Expanded(
+                              child: KatalogChoiceChip(
+                                isSelected: selectedChip == 3,
+                                onSelected: () => _select(3),
+                                label: 'Semua Produk',
+                              ),
+                            ),
+                          ],
                         ),
                       ],
                     ),
                   ),
-                ),
+                  Container(
+                    height: 4999,
+                    color: Colors.white,
+                  )
+                ],
               ),
-            )
-          ],
-        ),
+            ),
+          ),
+        ],
+//        body: Padding(
+//          padding: const EdgeInsets.all(20.0),
+//          child: Text(
+//              'Foto-foto Moms nanti dilayout jadi tema cantik kayak gini lho. Bakal dikasih cover istimewa juga. Ini nih pilihannya! Banyak banget dan bakal diupdate tiap bulan. Kalau Moms suka yang mana nih?'),
+//        ),
       ),
     );
+  }
+
+  void _select(int i) {
+    setState(() {
+      selectedChip = i;
+    });
   }
 }

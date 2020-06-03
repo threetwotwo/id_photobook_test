@@ -64,7 +64,7 @@ class _HomeState extends State<Home> {
             HomeScreen(),
             KatalogScreen(),
             Container(),
-            widget.user == null ? LoginPage() : AkunView(),
+            ProfileScreen(),
           ],
         ),
       ),
