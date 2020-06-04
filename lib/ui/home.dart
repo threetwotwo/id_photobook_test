@@ -6,6 +6,7 @@ import 'package:idphotobooktest/ui/screens/katalog_screen.dart';
 import 'package:idphotobooktest/ui/screens/home_screen.dart';
 import 'package:idphotobooktest/ui/screens/login_page.dart';
 import 'package:idphotobooktest/ui/screens/profile_screen.dart';
+import 'package:idphotobooktest/ui/screens/shopping_cart_screen.dart';
 import 'package:provider/provider.dart';
 
 class Home extends StatefulWidget {
@@ -57,7 +58,7 @@ class _HomeState extends State<Home> {
         children: <Widget>[
           HomeScreen(),
           KatalogScreen(),
-          Container(),
+          KeranjangScreen(),
           ProfileScreen(),
         ],
       ),
